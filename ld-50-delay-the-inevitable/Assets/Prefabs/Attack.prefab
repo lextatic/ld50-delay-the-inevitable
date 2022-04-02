@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8773830464813492193}
   - component: {fileID: 3540236099761617549}
+  - component: {fileID: 203566584}
   m_Layer: 0
   m_Name: Attack
   m_TagString: Untagged
@@ -51,6 +52,19 @@ MonoBehaviour:
   - {fileID: 8384000593853141559}
   - {fileID: 7203611569428549606}
   RotationSpeed: 0.5
+--- !u!114 &203566584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489520299705997448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dbff22a739822745a03c39693dc1358, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Attack: {fileID: 3540236099761617549}
 --- !u!1001 &471980361159505164
 PrefabInstance:
   m_ObjectHideFlags: 0
