@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5085048622098432981}
   - component: {fileID: 3401356178886473382}
   - component: {fileID: 423476060937380059}
+  - component: {fileID: 8274585577300993851}
   m_Layer: 0
   m_Name: MediumRangeAttack
   m_TagString: Untagged
@@ -326,3 +327,15 @@ PolygonCollider2D:
       - {x: 1.9938624, y: 1.4372933}
       - {x: 1.9890428, y: 1.4460826}
       - {x: 1.9963094, y: 1.4783578}
+--- !u!114 &8274585577300993851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3882164958811310337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bf1070e08bdc8c438fd959cc9625146, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
