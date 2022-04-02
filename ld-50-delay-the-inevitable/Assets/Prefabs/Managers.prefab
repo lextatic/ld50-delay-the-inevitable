@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3761247212243345758}
   m_Layer: 0
   m_Name: Managers
-  m_TagString: Untagged
+  m_TagString: Managers
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d228292830b102b4fa506c47c1967769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyPrefab: {fileID: 6461456199866920847, guid: 3b618791573bdc649bd9b4eed12030dd, type: 3}
+  EnemyPrefab: {fileID: 5232729609860245875, guid: 3b618791573bdc649bd9b4eed12030dd, type: 3}
   GameBoard: {fileID: 3761247212243345758}
 --- !u!114 &3761247212243345758
 MonoBehaviour:

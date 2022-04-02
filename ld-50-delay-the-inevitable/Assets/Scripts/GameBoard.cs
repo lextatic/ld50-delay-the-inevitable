@@ -1,5 +1,13 @@
 using UnityEngine;
 
+public enum Direction
+{
+	In,
+	Right,
+	Left,
+	Out
+}
+
 public class GameBoard : MonoBehaviour
 {
 	[SerializeField]
@@ -30,7 +38,7 @@ public class GameBoard : MonoBehaviour
 		}
 	}
 
-	public Vector2 SpawnEnemy()
+	public Vector2Int SpawnEnemy()
 	{
 		int randPositionX = 0;
 
@@ -42,7 +50,55 @@ public class GameBoard : MonoBehaviour
 
 		_ocupationMatrix[randPositionX, _boardSize.y - 1] = true;
 
-		return GetWorldPosition(randPositionX, _boardSize.y - 1);
+		return new Vector2Int(randPositionX, _boardSize.y - 1);
+	}
+
+	public Vector2Int MoveEnemy(Vector2Int enemyCurrentPosition, Direction direction)
+	{
+		_ocupationMatrix[enemyCurrentPosition.x, enemyCurrentPosition.y] = false;
+
+		switch (direction)
+		{
+			case Direction.In:
+				enemyCurrentPosition.y--;
+				break;
+
+			case Direction.Right:
+				enemyCurrentPosition.x++;
+
+				if (enemyCurrentPosition.x >= _boardSize.x)
+				{
+					enemyCurrentPosition.x = 0;
+				}
+
+				break;
+
+			case Direction.Left:
+				enemyCurrentPosition.x--;
+
+				if (enemyCurrentPosition.x < 0)
+				{
+					enemyCurrentPosition.x = _boardSize.x - 1;
+				}
+
+				break;
+
+			case Direction.Out:
+				enemyCurrentPosition.y++;
+				break;
+		}
+
+		_ocupationMatrix[enemyCurrentPosition.x, enemyCurrentPosition.y] = true;
+
+		return enemyCurrentPosition;
+	}
+
+	public Vector2 GetWorldPosition(int x, int y)
+	{
+		var sectionAngle = (360f / _boardSize.x);
+		var rotatedVector = Rotate(Vector2.right, (sectionAngle * x) - (sectionAngle / 2)).normalized;
+
+		return rotatedVector * (_innerCircleRadius + (_layerRadiusIncrement / 2) + (y * _layerRadiusIncrement));
 	}
 
 	private void Start()
@@ -53,14 +109,6 @@ public class GameBoard : MonoBehaviour
 	private bool IsPositionFree(int x, int y)
 	{
 		return !_ocupationMatrix[x, y];
-	}
-
-	private Vector2 GetWorldPosition(int x, int y)
-	{
-		var sectionAngle = (360f / _boardSize.x);
-		var rotatedVector = Rotate(Vector2.right, (sectionAngle * x) - (sectionAngle / 2)).normalized;
-
-		return rotatedVector * (_innerCircleRadius + (_layerRadiusIncrement / 2) + (y * _layerRadiusIncrement));
 	}
 
 	private void OnDrawGizmos()

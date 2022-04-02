@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-	public GameObject EnemyPrefab;
+	public Enemy EnemyPrefab;
 
 	public GameBoard GameBoard;
 
@@ -10,11 +10,9 @@ public class EnemySpawner : MonoBehaviour
 	{
 		if (GameBoard.HasFreeSpawnPoints)
 		{
-			Instantiate(EnemyPrefab, GameBoard.SpawnEnemy(), Quaternion.identity);
-		}
-		else
-		{
-			Debug.Log("Tabuleiro cheio");
+			var position = GameBoard.SpawnEnemy();
+			var enemy = Instantiate(EnemyPrefab);
+			enemy.GridPosition = position;
 		}
 	}
 
