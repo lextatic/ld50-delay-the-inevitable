@@ -13,6 +13,10 @@ public class Attack : MonoBehaviour
 
 	private List<Transform> _currentTargets = new List<Transform>();
 
+	public event Action<int> OnWeaponChanged;
+	public event Action OnMovingForAttack;
+	public event Action OnMovingBack;
+	public event Action OnAttackSwing;
 	public event Action OnAttackStartedExecuting;
 	public event Action OnAttackFinishedExecuting;
 
@@ -28,6 +32,8 @@ public class Attack : MonoBehaviour
 		{
 			AttackShapes[i].gameObject.SetActive(index == i);
 		}
+
+		OnWeaponChanged?.Invoke(index);
 	}
 
 	public void ExecuteAttack()
@@ -60,18 +66,48 @@ public class Attack : MonoBehaviour
 		yield return new WaitForSeconds(0.1f);
 		renderer.enabled = false;
 
+		var attacked = false;
 		for (int i = _currentTargets.Count - 1; i >= 0; i--)
 		{
+			OnMovingForAttack?.Invoke();
 			// Anim attack (doTween)
-			Player.DOMove(_currentTargets[i].position, 0.7f);
-			yield return new WaitForSeconds(1);
-
+			var offset = Vector3.zero;
+			if (Player.position.x - _currentTargets[i].position.x < 0)
+			{
+				Player.localScale = new Vector3(-1, 1, 1);
+				offset = Vector3.left;
+			}
+			else
+			{
+				offset = Vector3.right;
+				Player.localScale = new Vector3(1, 1, 1);
+			}
+			Player.DOMove(_currentTargets[i].position + offset, 0.7f);
+			yield return new WaitForSeconds(0.7f);
+			OnAttackSwing?.Invoke();
+			yield return new WaitForSeconds(0.60f);
 			Destroy(_currentTargets[i].gameObject);
+			yield return new WaitForSeconds(0.15f);
+			attacked = true;
 		}
 
 		// Anim go back (doTween)
+		if (attacked)
+		{
+			if (Player.position.x < 0)
+			{
+				Player.localScale = new Vector3(-1, 1, 1);
+			}
+			else
+			{
+				Player.localScale = new Vector3(1, 1, 1);
+			}
+
+			OnMovingBack?.Invoke();
+		}
+
 		Player.DOMove(Vector3.zero, 0.7f);
-		yield return new WaitForSeconds(1);
+		yield return new WaitForSeconds(0.7f);
 
 		OnAttackFinishedExecuting?.Invoke();
 	}
