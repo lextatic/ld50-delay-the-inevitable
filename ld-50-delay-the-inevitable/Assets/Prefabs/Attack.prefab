@@ -51,6 +51,7 @@ MonoBehaviour:
   - {fileID: 8384000593853141559}
   - {fileID: 7203611569428549606}
   RotationSpeed: 0.5
+  Player: {fileID: 0}
 --- !u!1001 &471980361159505164
 PrefabInstance:
   m_ObjectHideFlags: 0

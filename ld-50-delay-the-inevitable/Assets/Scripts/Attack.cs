@@ -1,6 +1,9 @@
+using DG.Tweening;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 
 public class Attack : MonoBehaviour
 {
@@ -10,7 +13,10 @@ public class Attack : MonoBehaviour
 
 	private List<Transform> _currentTargets = new List<Transform>();
 
-	public event Action OnAttackExecuted;
+	public event Action OnAttackStartedExecuting;
+	public event Action OnAttackFinishedExecuting;
+
+	public Transform Player;
 
 	public void SelectAttack(int index)
 	{
@@ -26,16 +32,48 @@ public class Attack : MonoBehaviour
 
 	public void ExecuteAttack()
 	{
+		OnAttackStartedExecuting?.Invoke();
+
+		StartCoroutine(AttackAnimationSequence());
+	}
+
+	public void ReactivateAttackGraphics()
+	{
+		GetComponentInChildren<SpriteShapeRenderer>().enabled = true;
+	}
+
+	private IEnumerator AttackAnimationSequence()
+	{
+		// Blink (horrible solution btw)
+		var renderer = GetComponentInChildren<SpriteShapeRenderer>();
+		renderer.enabled = false;
+		yield return new WaitForSeconds(0.1f);
+		renderer.enabled = true;
+		yield return new WaitForSeconds(0.1f);
+		renderer.enabled = false;
+		yield return new WaitForSeconds(0.1f);
+		renderer.enabled = true;
+		yield return new WaitForSeconds(0.1f);
+		renderer.enabled = false;
+		yield return new WaitForSeconds(0.1f);
+		renderer.enabled = true;
+		yield return new WaitForSeconds(0.1f);
+		renderer.enabled = false;
+
 		for (int i = _currentTargets.Count - 1; i >= 0; i--)
 		{
-			// TODO: Review this after implementing animation delays
-			DestroyImmediate(_currentTargets[i].gameObject);
+			// Anim attack (doTween)
+			Player.DOMove(_currentTargets[i].position, 0.7f);
+			yield return new WaitForSeconds(1);
 
-			// TODO: Can remove if back to non immediate Destroy
-			_currentTargets.Remove(_currentTargets[i]);
+			Destroy(_currentTargets[i].gameObject);
 		}
 
-		OnAttackExecuted?.Invoke();
+		// Anim go back (doTween)
+		Player.DOMove(Vector3.zero, 0.7f);
+		yield return new WaitForSeconds(1);
+
+		OnAttackFinishedExecuting?.Invoke();
 	}
 
 	private void Start()
@@ -62,8 +100,8 @@ public class Attack : MonoBehaviour
 		transform.Rotate(Vector3.forward, -RotationSpeed * Time.deltaTime * 360f);
 	}
 
-	private void OnTriggerEnter2D(Collider2D collision)
-	{
-		Debug.Log(collision.name);
-	}
+	//private void OnTriggerEnter2D(Collider2D collision)
+	//{
+	//	Debug.Log(collision.name);
+	//}
 }

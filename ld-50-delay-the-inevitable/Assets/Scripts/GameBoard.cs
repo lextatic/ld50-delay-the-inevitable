@@ -64,6 +64,11 @@ public class GameBoard : MonoBehaviour
 		return enemyCurrentPosition;
 	}
 
+	public void ReleasePosition(Vector2Int gridPosition)
+	{
+		_ocupationMatrix[gridPosition.x, gridPosition.y] = false;
+	}
+
 	public Vector2 GetWorldPosition(int x, int y)
 	{
 		var sectionAngle = (360f / _boardSize.x);

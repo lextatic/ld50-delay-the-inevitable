@@ -14,6 +14,7 @@ public class EnemySpawner : MonoBehaviour
 		{
 			var position = GameBoard.SpawnEnemy();
 			enemy = Instantiate(EnemyPrefab);
+			enemy.transform.position = GameBoard.GetWorldPosition(position.x, position.y + 1);
 			enemy.GridPosition = position;
 
 			return true;

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using UnityEngine;
 
@@ -25,7 +26,11 @@ public class Enemy : MonoBehaviour
 
 	public event Action<Enemy> OnEnemyDestroyed;
 
-	public void TakeTurn()
+	public bool IsMoving { get; private set; }
+
+	public bool IsAttacking { get; private set; }
+
+	public void AttackTurn()
 	{
 		_currentTurnsToAttack--;
 
@@ -33,7 +38,16 @@ public class Enemy : MonoBehaviour
 		{
 			if (_isAttackReady)
 			{
-				Debug.Log("Defeat");
+				IsAttacking = true;
+
+				transform.DOMove(Vector3.zero, 0.5f).OnComplete(() =>
+				{
+					Debug.Log("Defeat");
+					transform.DOMove(_gameBoard.GetWorldPosition(GridPosition.x, GridPosition.y), 0.5f).OnComplete(() =>
+					{
+						IsAttacking = false;
+					});
+				});
 				return;
 			}
 			else
@@ -42,8 +56,11 @@ public class Enemy : MonoBehaviour
 				OnAttackReady?.Invoke();
 			}
 		}
+	}
 
-		// TODO: maybe put this on a separated method
+	public void MoveTurn()
+	{
+		IsMoving = true;
 		AIMove();
 	}
 
@@ -76,6 +93,10 @@ public class Enemy : MonoBehaviour
 		{
 			Move(direction);
 		}
+		else
+		{
+			IsMoving = false;
+		}
 	}
 
 	private void Awake()
@@ -88,6 +109,8 @@ public class Enemy : MonoBehaviour
 		UpdateWorldPosition();
 		_currentTurnsToAttack = TurnsToAttack;
 		_isAttackReady = false;
+		IsMoving = false;
+		IsAttacking = false;
 	}
 
 	private void Move(Direction direction)
@@ -99,11 +122,16 @@ public class Enemy : MonoBehaviour
 
 	private void UpdateWorldPosition()
 	{
-		transform.position = _gameBoard.GetWorldPosition(GridPosition.x, GridPosition.y);
+		transform.DOMove(_gameBoard.GetWorldPosition(GridPosition.x, GridPosition.y), 0.5f).OnComplete(() =>
+		{
+			IsMoving = false;
+		});
 	}
 
 	private void OnDestroy()
 	{
+		_gameBoard.ReleasePosition(GridPosition);
+		IsMoving = false;
 		OnEnemyDestroyed?.Invoke(this);
 	}
 }
