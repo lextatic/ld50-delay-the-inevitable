@@ -43,13 +43,13 @@ public class GameManager : MonoBehaviour
 		{
 			enemy.AttackTurn();
 		}
-		yield return new WaitWhile(() => _enemies.Any() && _enemies.All(enemy => enemy.IsAttacking));
+		yield return new WaitWhile(() => _enemies.Any(enemy => enemy.IsAttacking));
 
 		foreach (var enemy in _enemies)
 		{
 			enemy.MoveTurn();
 		}
-		yield return new WaitWhile(() => _enemies.Any() && _enemies.All(enemy => enemy.IsMoving));
+		yield return new WaitWhile(() => _enemies.Any(enemy => enemy.IsMoving));
 
 		for (int i = 0; i < 2; i++)
 		{
@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
 				newEnemy.OnEnemyDestroyed += Enemy_OnEnemyDestroyed;
 			}
 		}
-		yield return new WaitWhile(() => _enemies.Any() && _enemies.All(enemy => enemy.IsMoving));
+		yield return new WaitWhile(() => _enemies.Any(enemy => enemy.IsMoving));
 
 		_playerAttackController.enabled = true;
 		_playerAttackController.ReactivateAttackGraphics();

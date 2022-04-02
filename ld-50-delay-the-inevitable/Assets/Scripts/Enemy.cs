@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
 
 	public event Action<Enemy> OnEnemyDestroyed;
 
-	public bool IsMoving { get; private set; }
+	public bool IsMoving { get; private set; } = true;
 
 	public bool IsAttacking { get; private set; }
 
@@ -109,7 +109,6 @@ public class Enemy : MonoBehaviour
 		UpdateWorldPosition();
 		_currentTurnsToAttack = TurnsToAttack;
 		_isAttackReady = false;
-		IsMoving = false;
 		IsAttacking = false;
 	}
 
