@@ -6,21 +6,19 @@ public class EnemySpawner : MonoBehaviour
 
 	public GameBoard GameBoard;
 
-	public void SpawnNewEnemy()
+	public bool TrySpawnNewEnemy(out Enemy enemy)
 	{
+		enemy = null;
+
 		if (GameBoard.HasFreeSpawnPoints)
 		{
 			var position = GameBoard.SpawnEnemy();
-			var enemy = Instantiate(EnemyPrefab);
+			enemy = Instantiate(EnemyPrefab);
 			enemy.GridPosition = position;
-		}
-	}
 
-	private void Update()
-	{
-		if (Input.GetKeyDown(KeyCode.P))
-		{
-			SpawnNewEnemy();
+			return true;
 		}
+
+		return false;
 	}
 }

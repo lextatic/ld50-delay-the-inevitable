@@ -298,6 +298,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers
       objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _playerAttackController
+      value: 
+      objectReference: {fileID: 203566585}
     - target: {fileID: 2712562553843354259, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
       propertyPath: m_RootOrder
       value: 3

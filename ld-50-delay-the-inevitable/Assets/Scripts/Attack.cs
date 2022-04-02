@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,8 @@ public class Attack : MonoBehaviour
 	public float RotationSpeed = 0.1f;
 
 	private List<Transform> _currentTargets = new List<Transform>();
+
+	public event Action OnAttackExecuted;
 
 	public void SelectAttack(int index)
 	{
@@ -23,6 +26,8 @@ public class Attack : MonoBehaviour
 
 	public void ExecuteAttack()
 	{
+		OnAttackExecuted?.Invoke();
+
 		for (int i = _currentTargets.Count - 1; i >= 0; i--)
 		{
 			Destroy(_currentTargets[i].gameObject);
