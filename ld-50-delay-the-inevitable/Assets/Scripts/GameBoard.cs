@@ -46,7 +46,7 @@ public class GameBoard : MonoBehaviour
 		{
 			randPositionX = Random.Range(0, _boardSize.x);
 		}
-		while (!IsPositionFree(randPositionX, _boardSize.y - 1));
+		while (!IsValidPosition(randPositionX, _boardSize.y - 1));
 
 		_ocupationMatrix[randPositionX, _boardSize.y - 1] = true;
 
@@ -57,6 +57,42 @@ public class GameBoard : MonoBehaviour
 	{
 		_ocupationMatrix[enemyCurrentPosition.x, enemyCurrentPosition.y] = false;
 
+		CalculateNewPositionWithDirection(ref enemyCurrentPosition, direction);
+
+		_ocupationMatrix[enemyCurrentPosition.x, enemyCurrentPosition.y] = true;
+
+		return enemyCurrentPosition;
+	}
+
+	public Vector2 GetWorldPosition(int x, int y)
+	{
+		var sectionAngle = (360f / _boardSize.x);
+		var rotatedVector = Rotate(Vector2.right, (sectionAngle * x) - (sectionAngle / 2)).normalized;
+
+		return rotatedVector * (_innerCircleRadius + (_layerRadiusIncrement / 2) + (y * _layerRadiusIncrement));
+	}
+
+	public bool IsValidPosition(Vector2Int enemyCurrentPosition, Direction direction)
+	{
+		CalculateNewPositionWithDirection(ref enemyCurrentPosition, direction);
+
+		return IsValidPosition(enemyCurrentPosition.x, enemyCurrentPosition.y);
+	}
+
+	private bool IsValidPosition(int x, int y)
+	{
+		if (y < 0 || y >= _boardSize.y) return false;
+
+		return !_ocupationMatrix[x, y];
+	}
+
+	private void Start()
+	{
+		_ocupationMatrix = new bool[_boardSize.x, _boardSize.y];
+	}
+
+	private void CalculateNewPositionWithDirection(ref Vector2Int enemyCurrentPosition, Direction direction)
+	{
 		switch (direction)
 		{
 			case Direction.In:
@@ -87,28 +123,6 @@ public class GameBoard : MonoBehaviour
 				enemyCurrentPosition.y++;
 				break;
 		}
-
-		_ocupationMatrix[enemyCurrentPosition.x, enemyCurrentPosition.y] = true;
-
-		return enemyCurrentPosition;
-	}
-
-	public Vector2 GetWorldPosition(int x, int y)
-	{
-		var sectionAngle = (360f / _boardSize.x);
-		var rotatedVector = Rotate(Vector2.right, (sectionAngle * x) - (sectionAngle / 2)).normalized;
-
-		return rotatedVector * (_innerCircleRadius + (_layerRadiusIncrement / 2) + (y * _layerRadiusIncrement));
-	}
-
-	private void Start()
-	{
-		_ocupationMatrix = new bool[_boardSize.x, _boardSize.y];
-	}
-
-	private bool IsPositionFree(int x, int y)
-	{
-		return !_ocupationMatrix[x, y];
 	}
 
 	private void OnDrawGizmos()
