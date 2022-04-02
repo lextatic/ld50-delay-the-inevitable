@@ -26,12 +26,16 @@ public class Attack : MonoBehaviour
 
 	public void ExecuteAttack()
 	{
-		OnAttackExecuted?.Invoke();
-
 		for (int i = _currentTargets.Count - 1; i >= 0; i--)
 		{
-			Destroy(_currentTargets[i].gameObject);
+			// TODO: Review this after implementing animation delays
+			DestroyImmediate(_currentTargets[i].gameObject);
+
+			// TODO: Can remove if back to non immediate Destroy
+			_currentTargets.Remove(_currentTargets[i]);
 		}
+
+		OnAttackExecuted?.Invoke();
 	}
 
 	private void Start()
