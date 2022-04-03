@@ -149,6 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Animator: {fileID: 8502708179999245149}
   AttackComponent: {fileID: 0}
+  GameManager: {fileID: 0}
   SheathedWeapons:
   - {fileID: 3642047271335287015}
   - {fileID: 2929139669316178690}
@@ -348,13 +349,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2929139669316178690}
-  m_LocalRotation: {x: -0, y: -0, z: -0.22650102, w: 0.974011}
-  m_LocalPosition: {x: 0.052, y: 0.482, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.23586504, w: 0.97178584}
+  m_LocalPosition: {x: -0.008, y: 0.419, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2031589330399073545}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -26.182}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 27.285}
 --- !u!212 &1283687383935189860
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -3,7 +3,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.U2D;
 
 public class Attack : MonoBehaviour
 {
@@ -45,26 +44,14 @@ public class Attack : MonoBehaviour
 
 	public void ReactivateAttackGraphics()
 	{
-		GetComponentInChildren<SpriteShapeRenderer>().enabled = true;
+		GetComponentInChildren<SpriteRenderer>().DOFade(0.4f, 0f);
 	}
 
 	private IEnumerator AttackAnimationSequence()
 	{
-		// Blink (horrible solution btw)
-		var renderer = GetComponentInChildren<SpriteShapeRenderer>();
-		renderer.enabled = false;
-		yield return new WaitForSeconds(0.1f);
-		renderer.enabled = true;
-		yield return new WaitForSeconds(0.1f);
-		renderer.enabled = false;
-		yield return new WaitForSeconds(0.1f);
-		renderer.enabled = true;
-		yield return new WaitForSeconds(0.1f);
-		renderer.enabled = false;
-		yield return new WaitForSeconds(0.1f);
-		renderer.enabled = true;
-		yield return new WaitForSeconds(0.1f);
-		renderer.enabled = false;
+		var renderer = GetComponentInChildren<SpriteRenderer>();
+
+		renderer.DOFade(0, 0.1f).SetLoops(6, LoopType.Yoyo);
 
 		var attacked = false;
 		for (int i = _currentTargets.Count - 1; i >= 0; i--)

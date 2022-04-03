@@ -11,6 +11,8 @@ public class EnemyView : MonoBehaviour
 
 	public GameObject Warning;
 
+	private bool _attackReady = false;
+
 	private void Start()
 	{
 		EnemyBehaviour.OnAttackExecuted += EnemyBehaviour_OnAttackExecuted;
@@ -53,11 +55,13 @@ public class EnemyView : MonoBehaviour
 
 	private void EnemyBehaviour_OnAttackReady()
 	{
+		_attackReady = true;
 		Warning.SetActive(true);
 	}
 
 	private void EnemyBehaviour_OnAttackExecuted()
 	{
+		_attackReady = false;
 		Warning.SetActive(false);
 		Animator.SetInteger("State", 3);
 	}
@@ -65,10 +69,15 @@ public class EnemyView : MonoBehaviour
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		Mark.SetActive(true);
+		Warning.SetActive(false);
 	}
 
 	private void OnTriggerExit2D(Collider2D collision)
 	{
 		Mark.SetActive(false);
+		if (_attackReady)
+		{
+			Warning.SetActive(true);
+		}
 	}
 }
