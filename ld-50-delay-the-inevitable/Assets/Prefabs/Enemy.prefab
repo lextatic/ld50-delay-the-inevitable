@@ -489,6 +489,7 @@ MonoBehaviour:
   Animator: {fileID: 7151970552892594215}
   Mark: {fileID: 6461456199413538768}
   Warning: {fileID: 8594692059622899617}
+  WarningSound: {fileID: 11400000, guid: 014defa3b25d9004888bb6dad7754eb1, type: 2}
 --- !u!1 &8520089407308010665
 GameObject:
   m_ObjectHideFlags: 0

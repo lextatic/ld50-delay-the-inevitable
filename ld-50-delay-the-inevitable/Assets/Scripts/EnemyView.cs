@@ -11,6 +11,8 @@ public class EnemyView : MonoBehaviour
 
 	public GameObject Warning;
 
+	public SimpleAudioEvent WarningSound;
+
 	private bool _attackReady = false;
 
 	private void Start()
@@ -55,6 +57,7 @@ public class EnemyView : MonoBehaviour
 
 	private void EnemyBehaviour_OnAttackReady()
 	{
+		WarningSound.Play(Camera.main.GetComponent<AudioSource>());
 		_attackReady = true;
 		Warning.SetActive(true);
 	}

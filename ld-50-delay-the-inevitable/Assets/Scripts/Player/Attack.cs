@@ -69,12 +69,13 @@ public class Attack : MonoBehaviour
 
 		BackToAction.Play(Camera.main.GetComponent<AudioSource>());
 
-		//GetComponentInChildren<SpriteRenderer>().DOFade(0.4f, 0f);
 		GetComponentInChildren<SpriteRenderer>().DOFade(0.4f, 0.1f).SetLoops(3, LoopType.Yoyo).SetEase(Ease.Linear);
 	}
 
 	private IEnumerator AttackAnimationSequence()
 	{
+		yield return null;
+
 		var renderer = _attackShapeRenderers[_currentAttackIndex];
 
 		if (_currentTargets.Count <= 0)
@@ -110,7 +111,6 @@ public class Attack : MonoBehaviour
 			OnAttackSwing?.Invoke();
 			SlashSound.Play(Camera.main.GetComponent<AudioSource>());
 			yield return new WaitForSeconds(0.60f);
-			Debug.Log($"_currentTargets.Count: {_currentTargets.Count} - i: {i}");
 			_currentTargets[i].GetComponent<Enemy>().Kill();
 			yield return new WaitForSeconds(0.15f);
 			attacked = true;

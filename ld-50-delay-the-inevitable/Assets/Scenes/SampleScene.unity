@@ -758,6 +758,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 757781278}
     - target: {fileID: 3540236099761617549, guid: 120a1642436abfd468e519fdf48f5bf8, type: 3}
+      propertyPath: Warning
+      value: 
+      objectReference: {fileID: 11400000, guid: 014defa3b25d9004888bb6dad7754eb1, type: 2}
+    - target: {fileID: 3540236099761617549, guid: 120a1642436abfd468e519fdf48f5bf8, type: 3}
       propertyPath: SlashSound
       value: 
       objectReference: {fileID: 11400000, guid: 035b78960c7d37040a694d7a7e5b849c, type: 2}
