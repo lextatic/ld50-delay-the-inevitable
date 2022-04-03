@@ -105,6 +105,7 @@ public class Enemy : MonoBehaviour
 		yield return new WaitForSeconds(0.60f);
 
 		OnPlayerDefeated?.Invoke();
+		Camera.main.DOShakePosition(0.2f, 0.2f, 100, 90, true);
 
 		yield return new WaitForSeconds(0.15f);
 		transform.DOMove(_gameBoard.GetWorldPosition(GridPosition.x, GridPosition.y), 0.5f).OnComplete(() =>

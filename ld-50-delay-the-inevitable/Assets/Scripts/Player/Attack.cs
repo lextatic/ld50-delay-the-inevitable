@@ -119,6 +119,9 @@ public class Attack : MonoBehaviour
 				Debug.Log($"It happened again. i = {i} - _currentTargets.Count = {_currentTargets.Count}");
 				i = _currentTargets.Count - 1;
 			}
+
+			Camera.main.DOShakePosition(0.2f, 0.2f, 100, 90, true);
+
 			_currentTargets[i].GetComponent<Enemy>().Kill();
 			yield return new WaitForSeconds(0.15f);
 			attacked = true;
