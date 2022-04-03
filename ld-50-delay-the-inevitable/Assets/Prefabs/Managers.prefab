@@ -50,7 +50,7 @@ MonoBehaviour:
   _playerAttackController: {fileID: 0}
   _inputManager: {fileID: 1876194016}
   _gameBoard: {fileID: 3761247212243345758}
-  TurnsToVictory: 2
+  TurnsToVictory: 20
   SkipText: {fileID: 0}
   _spawnDataPerTurn:
   - Sword: 2

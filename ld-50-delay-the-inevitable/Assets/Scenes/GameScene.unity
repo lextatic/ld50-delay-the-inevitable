@@ -264,9 +264,9 @@ MonoBehaviour:
   m_RefResolutionY: 600
   m_UpscaleRT: 0
   m_PixelSnapping: 1
-  m_CropFrameX: 0
-  m_CropFrameY: 0
-  m_StretchFill: 0
+  m_CropFrameX: 1
+  m_CropFrameY: 1
+  m_StretchFill: 1
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1175,6 +1175,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2151884914340122889, guid: 6b8e2ae1acdf5f74d8938718b937d204, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3130087714904274239, guid: 6b8e2ae1acdf5f74d8938718b937d204, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4592282155606742283, guid: 6b8e2ae1acdf5f74d8938718b937d204, type: 3}
       propertyPath: m_Name
       value: GameUI
