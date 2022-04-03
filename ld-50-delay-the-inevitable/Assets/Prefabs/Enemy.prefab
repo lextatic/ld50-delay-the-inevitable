@@ -472,6 +472,7 @@ MonoBehaviour:
   MoveSidewaysChance: 0.3
   TurnsToAttack: 8
   AttackRange: {x: 0, y: 1}
+  SlashSound: {fileID: 11400000, guid: 9684a8dc4fd2e9945bb7519b807dc342, type: 2}
 --- !u!114 &5040255157341464277
 MonoBehaviour:
   m_ObjectHideFlags: 0

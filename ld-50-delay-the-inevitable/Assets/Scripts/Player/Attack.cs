@@ -12,8 +12,17 @@ public class Attack : MonoBehaviour
 
 	public Color NormalColor;
 	public Color ValidTargetColor;
+	public Color ErrorTargetColor;
+
+	public SimpleAudioEvent SlashSound;
+	public SimpleAudioEvent AttackAction;
+	public SimpleAudioEvent AttackActionError;
+	public SimpleAudioEvent BackToAction;
 
 	private List<Transform> _currentTargets = new List<Transform>();
+	private SpriteRenderer[] _attackShapeRenderers;
+
+	private int _currentAttackIndex;
 
 	public event Action<int> OnWeaponChanged;
 	public event Action OnMovingForAttack;
@@ -27,6 +36,8 @@ public class Attack : MonoBehaviour
 	public void SelectAttack(int index)
 	{
 		Debug.Assert(index <= AttackShapes.Length);
+
+		_currentAttackIndex = index;
 
 		_currentTargets.Clear();
 
@@ -47,12 +58,34 @@ public class Attack : MonoBehaviour
 
 	public void ReactivateAttackGraphics()
 	{
-		GetComponentInChildren<SpriteRenderer>().DOFade(0.4f, 0f);
+		if (_currentTargets.Count > 0)
+		{
+			_attackShapeRenderers[_currentAttackIndex].color = new Color(ValidTargetColor.r, ValidTargetColor.g, ValidTargetColor.b, 0); ;
+		}
+		else
+		{
+			_attackShapeRenderers[_currentAttackIndex].color = new Color(NormalColor.r, NormalColor.g, NormalColor.b, 0); ;
+		}
+
+		BackToAction.Play(Camera.main.GetComponent<AudioSource>());
+
+		//GetComponentInChildren<SpriteRenderer>().DOFade(0.4f, 0f);
+		GetComponentInChildren<SpriteRenderer>().DOFade(0.4f, 0.1f).SetLoops(3, LoopType.Yoyo).SetEase(Ease.Linear);
 	}
 
 	private IEnumerator AttackAnimationSequence()
 	{
-		var renderer = GetComponentInChildren<SpriteRenderer>();
+		var renderer = _attackShapeRenderers[_currentAttackIndex];
+
+		if (_currentTargets.Count <= 0)
+		{
+			AttackActionError.Play(Camera.main.GetComponent<AudioSource>());
+			renderer.color = ErrorTargetColor;
+		}
+		else
+		{
+			AttackAction.Play(Camera.main.GetComponent<AudioSource>());
+		}
 
 		renderer.DOFade(0, 0.1f).SetLoops(7, LoopType.Yoyo).SetEase(Ease.Linear);
 
@@ -75,7 +108,9 @@ public class Attack : MonoBehaviour
 			Player.DOMove(_currentTargets[i].position + offset, 0.7f);
 			yield return new WaitForSeconds(0.7f);
 			OnAttackSwing?.Invoke();
+			SlashSound.Play(Camera.main.GetComponent<AudioSource>());
 			yield return new WaitForSeconds(0.60f);
+			Debug.Log($"_currentTargets.Count: {_currentTargets.Count} - i: {i}");
 			_currentTargets[i].GetComponent<Enemy>().Kill();
 			yield return new WaitForSeconds(0.15f);
 			attacked = true;
@@ -109,13 +144,21 @@ public class Attack : MonoBehaviour
 			attackShape.OnAddTarget += AttackShape_OnAddTarget;
 			attackShape.OnRemoveTarget += AttackShape_OnRemoveTarget;
 		}
+
+		_currentAttackIndex = 1;
+
+		_attackShapeRenderers = new SpriteRenderer[AttackShapes.Length];
+		for (int i = 0; i < AttackShapes.Length; i++)
+		{
+			_attackShapeRenderers[i] = AttackShapes[i].GetComponent<SpriteRenderer>();
+		}
 	}
 
 	private void AttackShape_OnAddTarget(Transform newTarget)
 	{
 		if (_currentTargets.Count == 0)
 		{
-			var renderer = GetComponentInChildren<SpriteRenderer>();
+			var renderer = _attackShapeRenderers[_currentAttackIndex];
 			if (renderer.color.a == 0.0f)
 			{
 				renderer.color = new Color(ValidTargetColor.r, ValidTargetColor.g, ValidTargetColor.b, 0);
@@ -136,7 +179,17 @@ public class Attack : MonoBehaviour
 
 		if (_currentTargets.Count == 0)
 		{
-			GetComponentInChildren<SpriteRenderer>().color = NormalColor;
+			var renderer = _attackShapeRenderers[_currentAttackIndex];
+			if (renderer.color.a == 0.0f)
+			{
+				renderer.color = new Color(NormalColor.r, NormalColor.g, NormalColor.b, 0);
+			}
+			else
+			{
+				renderer.color = NormalColor;
+			}
+
+			//GetComponentInChildren<SpriteRenderer>().color = NormalColor;
 		}
 	}
 

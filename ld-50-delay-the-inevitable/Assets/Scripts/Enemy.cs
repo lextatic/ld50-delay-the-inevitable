@@ -15,6 +15,8 @@ public class Enemy : MonoBehaviour
 	[Tooltip("x = min , y = max")]
 	public Vector2Int AttackRange = new Vector2Int(0, 1);
 
+	public SimpleAudioEvent SlashSound;
+
 	private int _currentTurnsToAttack;
 
 	private GameBoard _gameBoard;
@@ -107,6 +109,7 @@ public class Enemy : MonoBehaviour
 
 		// Animar ataque, dar delay
 		OnAttackExecuted?.Invoke();
+		SlashSound.Play(Camera.main.GetComponent<AudioSource>());
 		yield return new WaitForSeconds(0.60f);
 
 		OnPlayerDefeated?.Invoke();
@@ -203,13 +206,5 @@ public class Enemy : MonoBehaviour
 			IsMoving = false;
 			OnIdle?.Invoke();
 		});
-	}
-
-	// TODO: Provavelmente não precisa mais disso aqui
-	private void OnDestroy()
-	{
-		//_gameBoard.ReleasePosition(GridPosition);
-		//IsMoving = false;
-		//OnEnemyDestroyed?.Invoke(this);
 	}
 }
