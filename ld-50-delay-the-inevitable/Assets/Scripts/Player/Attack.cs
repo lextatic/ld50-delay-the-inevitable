@@ -10,6 +10,9 @@ public class Attack : MonoBehaviour
 
 	public float RotationSpeed = 0.1f;
 
+	public Color NormalColor;
+	public Color ValidTargetColor;
+
 	private List<Transform> _currentTargets = new List<Transform>();
 
 	public event Action<int> OnWeaponChanged;
@@ -51,7 +54,7 @@ public class Attack : MonoBehaviour
 	{
 		var renderer = GetComponentInChildren<SpriteRenderer>();
 
-		renderer.DOFade(0, 0.1f).SetLoops(6, LoopType.Yoyo);
+		renderer.DOFade(0, 0.1f).SetLoops(7, LoopType.Yoyo).SetEase(Ease.Linear);
 
 		var attacked = false;
 		for (int i = _currentTargets.Count - 1; i >= 0; i--)
@@ -110,12 +113,31 @@ public class Attack : MonoBehaviour
 
 	private void AttackShape_OnAddTarget(Transform newTarget)
 	{
+		if (_currentTargets.Count == 0)
+		{
+			var renderer = GetComponentInChildren<SpriteRenderer>();
+			if (renderer.color.a == 0.0f)
+			{
+				renderer.color = new Color(ValidTargetColor.r, ValidTargetColor.g, ValidTargetColor.b, 0);
+			}
+			else
+			{
+				renderer.color = ValidTargetColor;
+			}
+			//GetComponentInChildren<SpriteRenderer>().color = ValidTargetColor;
+		}
+
 		_currentTargets.Add(newTarget);
 	}
 
 	private void AttackShape_OnRemoveTarget(Transform targetRemoved)
 	{
 		_currentTargets.Remove(targetRemoved);
+
+		if (_currentTargets.Count == 0)
+		{
+			GetComponentInChildren<SpriteRenderer>().color = NormalColor;
+		}
 	}
 
 	private void Update()
