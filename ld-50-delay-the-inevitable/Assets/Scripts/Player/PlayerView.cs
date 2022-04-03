@@ -20,7 +20,14 @@ public class PlayerView : MonoBehaviour
 
 	private void AttackComponent_OnAttackSwing()
 	{
-		Animator.SetInteger("State", 3);
+		if (EquippedWeapons[1].activeInHierarchy)
+		{
+			Animator.SetInteger("State", 3);
+		}
+		else
+		{
+			Animator.SetInteger("State", 4);
+		}
 	}
 
 	private void AttackComponent_OnAttackFinishedExecuting()
