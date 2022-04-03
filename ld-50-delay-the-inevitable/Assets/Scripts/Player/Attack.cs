@@ -74,8 +74,6 @@ public class Attack : MonoBehaviour
 
 	private IEnumerator AttackAnimationSequence()
 	{
-		yield return null;
-
 		var renderer = _attackShapeRenderers[_currentAttackIndex];
 
 		if (_currentTargets.Count <= 0)
@@ -167,8 +165,9 @@ public class Attack : MonoBehaviour
 			{
 				renderer.color = ValidTargetColor;
 			}
-			//GetComponentInChildren<SpriteRenderer>().color = ValidTargetColor;
 		}
+
+		newTarget.GetComponentInChildren<EnemyView>().ActivateMark();
 
 		_currentTargets.Add(newTarget);
 	}
@@ -188,9 +187,9 @@ public class Attack : MonoBehaviour
 			{
 				renderer.color = NormalColor;
 			}
-
-			//GetComponentInChildren<SpriteRenderer>().color = NormalColor;
 		}
+
+		targetRemoved.GetComponentInChildren<EnemyView>().DeactivateMark();
 	}
 
 	private void Update()

@@ -51,6 +51,13 @@ MonoBehaviour:
   - {fileID: 8384000593853141559}
   - {fileID: 7203611569428549606}
   RotationSpeed: 0.5
+  NormalColor: {r: 0.03163936, g: 0.3426215, b: 0.745283, a: 0.39607844}
+  ValidTargetColor: {r: 1, g: 0.7007773, b: 0, a: 0.39607844}
+  ErrorTargetColor: {r: 0.7735849, g: 0.02120103, b: 0, a: 0.4}
+  SlashSound: {fileID: 11400000, guid: 035b78960c7d37040a694d7a7e5b849c, type: 2}
+  AttackAction: {fileID: 11400000, guid: 6f36aeacd3169cf429e71f777058bdac, type: 2}
+  AttackActionError: {fileID: 11400000, guid: 7af9e4471611c654099bdd2679aa2777, type: 2}
+  BackToAction: {fileID: 11400000, guid: c92eaf89fd4125344bb0b672359c647c, type: 2}
   Player: {fileID: 0}
 --- !u!1001 &471980361159505164
 PrefabInstance:

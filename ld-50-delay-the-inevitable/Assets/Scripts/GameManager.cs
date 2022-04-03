@@ -15,17 +15,35 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	private InputManager _inputManager;
 
+	[SerializeField]
+	private GameBoard _gameBoard;
+
 	private List<Enemy> _enemies = new List<Enemy>();
 
 	private bool _gameOver;
 
 	public event Action OnPlayerDefeated;
 
+	public void AllowRestart()
+	{
+		_inputManager.enabled = true;
+		_inputManager.GameOver = true;
+	}
+
 	private void Start()
 	{
 		_playerAttackController.OnAttackStartedExecuting += PlayerAttackController_OnAttackStartedExecuting;
 		_playerAttackController.OnAttackFinishedExecuting += PlayerAttackController_OnAttackFinishedExecuting;
 		_gameOver = false;
+
+		_enemies.AddRange(FindObjectsOfType<Enemy>());
+
+		foreach (var enemy in _enemies)
+		{
+			enemy.OnEnemyDestroyed += Enemy_OnEnemyDestroyed;
+			enemy.OnPlayerDefeated += Enemy_OnPlayerDefeated;
+			_gameBoard.OcupySpot(enemy.GridPosition);
+		}
 	}
 
 	private void PlayerAttackController_OnAttackStartedExecuting()

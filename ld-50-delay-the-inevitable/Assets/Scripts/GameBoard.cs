@@ -84,6 +84,11 @@ public class GameBoard : MonoBehaviour
 		return IsValidPosition(enemyCurrentPosition.x, enemyCurrentPosition.y);
 	}
 
+	public void OcupySpot(Vector2Int gridPosition)
+	{
+		_ocupationMatrix[gridPosition.x, gridPosition.y] = true;
+	}
+
 	private bool IsValidPosition(int x, int y)
 	{
 		if (y < 0 || y >= _boardSize.y) return false;
@@ -91,7 +96,7 @@ public class GameBoard : MonoBehaviour
 		return !_ocupationMatrix[x, y];
 	}
 
-	private void Start()
+	private void Awake()
 	{
 		_ocupationMatrix = new bool[_boardSize.x, _boardSize.y];
 	}
@@ -129,29 +134,6 @@ public class GameBoard : MonoBehaviour
 				break;
 		}
 	}
-
-	//private void OnDrawGizmos()
-	//{
-	//	Gizmos.color = Color.green;
-	//	UnityEditor.Handles.color = Color.green;
-
-	//	UnityEditor.Handles.DrawWireDisc(Vector3.zero, Vector3.forward, _innerCircleRadius);
-	//	for (int layer = 0; layer < _boardSize.y; layer++)
-	//	{
-	//		UnityEditor.Handles.DrawWireDisc(Vector3.zero, Vector3.forward, _innerCircleRadius + _layerRadiusIncrement + (layer * _layerRadiusIncrement));
-	//	}
-
-	//	for (int i = 0; i < _boardSize.x; i++)
-	//	{
-	//		var rotatedVector = Rotate(Vector2.right, (360f / _boardSize.x) * i).normalized;
-	//		Gizmos.DrawLine(rotatedVector * _innerCircleRadius, rotatedVector * (_innerCircleRadius + _boardSize.y * _layerRadiusIncrement));
-
-	//		for (int layer = 0; layer < _boardSize.y; layer++)
-	//		{
-	//			Gizmos.DrawSphere(GetWorldPosition(i, layer), 0.1f);
-	//		}
-	//	}
-	//}
 
 	public static Vector2 Rotate(Vector2 vector, float delta)
 	{

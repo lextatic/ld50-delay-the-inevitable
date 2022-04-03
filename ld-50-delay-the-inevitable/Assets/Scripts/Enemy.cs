@@ -45,37 +45,29 @@ public class Enemy : MonoBehaviour
 	{
 		_currentTurnsToAttack--;
 
-		if (_currentTurnsToAttack <= 1 && GridPosition.y >= AttackRange.x && GridPosition.y <= AttackRange.y)
+		if (_isAttackReady)
 		{
-			if (_isAttackReady)
+			IsAttacking = true;
+
+			OnMoving?.Invoke();
+
+			var offset = Vector3.zero;
+			if (transform.position.x < 0)
 			{
-				IsAttacking = true;
-
-				OnMoving?.Invoke();
-
-				var offset = Vector3.zero;
-				if (transform.position.x < 0)
-				{
-					transform.localScale = new Vector3(-1, 1, 1);
-					offset = Vector3.left;
-				}
-				else
-				{
-					offset = Vector3.right;
-					transform.localScale = new Vector3(1, 1, 1);
-				}
-
-				transform.DOMove(Vector3.zero + offset, 0.7f).OnComplete(() =>
-				{
-					StartCoroutine(AttackCoroutine());
-				});
-				return;
+				transform.localScale = new Vector3(-1, 1, 1);
+				offset = Vector3.left;
 			}
 			else
 			{
-				_isAttackReady = true;
-				OnAttackReady?.Invoke();
+				offset = Vector3.right;
+				transform.localScale = new Vector3(1, 1, 1);
 			}
+
+			transform.DOMove(Vector3.zero + offset, 0.7f).OnComplete(() =>
+			{
+				StartCoroutine(AttackCoroutine());
+			});
+			return;
 		}
 	}
 
@@ -204,6 +196,13 @@ public class Enemy : MonoBehaviour
 			}
 
 			IsMoving = false;
+
+			if (_currentTurnsToAttack <= 1 && GridPosition.y >= AttackRange.x && GridPosition.y <= AttackRange.y)
+			{
+				_isAttackReady = true;
+				OnAttackReady?.Invoke();
+			}
+
 			OnIdle?.Invoke();
 		});
 	}

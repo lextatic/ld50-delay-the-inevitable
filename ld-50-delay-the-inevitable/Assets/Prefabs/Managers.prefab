@@ -49,6 +49,7 @@ MonoBehaviour:
   _enemySpawner: {fileID: 180437155038530977}
   _playerAttackController: {fileID: 0}
   _inputManager: {fileID: 1876194016}
+  _gameBoard: {fileID: 3761247212243345758}
 --- !u!114 &3761247212243345758
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -25,6 +25,8 @@ public class PlayerView : MonoBehaviour
 	private void GameManager_OnPlayerDefeated()
 	{
 		Animator.SetInteger("State", 5);
+
+		GameManager.AllowRestart();
 	}
 
 	private void AttackComponent_OnAttackSwing()

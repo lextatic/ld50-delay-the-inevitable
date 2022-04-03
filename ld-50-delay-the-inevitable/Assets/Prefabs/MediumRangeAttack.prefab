@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4404515950076243554}
   - component: {fileID: 8274585577300993851}
   - component: {fileID: 8076703150379461712}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MediumRangeAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
