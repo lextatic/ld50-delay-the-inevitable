@@ -130,28 +130,28 @@ public class GameBoard : MonoBehaviour
 		}
 	}
 
-	private void OnDrawGizmos()
-	{
-		Gizmos.color = Color.green;
-		UnityEditor.Handles.color = Color.green;
+	//private void OnDrawGizmos()
+	//{
+	//	Gizmos.color = Color.green;
+	//	UnityEditor.Handles.color = Color.green;
 
-		UnityEditor.Handles.DrawWireDisc(Vector3.zero, Vector3.forward, _innerCircleRadius);
-		for (int layer = 0; layer < _boardSize.y; layer++)
-		{
-			UnityEditor.Handles.DrawWireDisc(Vector3.zero, Vector3.forward, _innerCircleRadius + _layerRadiusIncrement + (layer * _layerRadiusIncrement));
-		}
+	//	UnityEditor.Handles.DrawWireDisc(Vector3.zero, Vector3.forward, _innerCircleRadius);
+	//	for (int layer = 0; layer < _boardSize.y; layer++)
+	//	{
+	//		UnityEditor.Handles.DrawWireDisc(Vector3.zero, Vector3.forward, _innerCircleRadius + _layerRadiusIncrement + (layer * _layerRadiusIncrement));
+	//	}
 
-		for (int i = 0; i < _boardSize.x; i++)
-		{
-			var rotatedVector = Rotate(Vector2.right, (360f / _boardSize.x) * i).normalized;
-			Gizmos.DrawLine(rotatedVector * _innerCircleRadius, rotatedVector * (_innerCircleRadius + _boardSize.y * _layerRadiusIncrement));
+	//	for (int i = 0; i < _boardSize.x; i++)
+	//	{
+	//		var rotatedVector = Rotate(Vector2.right, (360f / _boardSize.x) * i).normalized;
+	//		Gizmos.DrawLine(rotatedVector * _innerCircleRadius, rotatedVector * (_innerCircleRadius + _boardSize.y * _layerRadiusIncrement));
 
-			for (int layer = 0; layer < _boardSize.y; layer++)
-			{
-				Gizmos.DrawSphere(GetWorldPosition(i, layer), 0.1f);
-			}
-		}
-	}
+	//		for (int layer = 0; layer < _boardSize.y; layer++)
+	//		{
+	//			Gizmos.DrawSphere(GetWorldPosition(i, layer), 0.1f);
+	//		}
+	//	}
+	//}
 
 	public static Vector2 Rotate(Vector2 vector, float delta)
 	{
