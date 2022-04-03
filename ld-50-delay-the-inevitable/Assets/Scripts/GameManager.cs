@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour
 
 	private int _turnsCount = 0;
 
+	private int _killCount = 0;
+
 	private List<Enemy> _enemies = new List<Enemy>();
 
 	private bool _gameOver;
@@ -44,6 +46,8 @@ public class GameManager : MonoBehaviour
 	public event Action<int> OnTurnPassed;
 
 	public int CurrentTurn { get => _turnsCount; }
+
+	public int KillCount { get => _killCount; }
 
 	private void Start()
 	{
@@ -174,6 +178,8 @@ public class GameManager : MonoBehaviour
 
 	private void Enemy_OnEnemyDestroyed(Enemy destroyedEnemy)
 	{
+		_killCount++;
+
 		_enemies.Remove(destroyedEnemy);
 		destroyedEnemy.OnEnemyDestroyed -= Enemy_OnEnemyDestroyed;
 		destroyedEnemy.OnPlayerDefeated -= Enemy_OnPlayerDefeated;

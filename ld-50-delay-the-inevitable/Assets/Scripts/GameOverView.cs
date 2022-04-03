@@ -14,6 +14,7 @@ public class GameOverView : MonoBehaviour
 
 	public TextMeshProUGUI GameOverText;
 	public TextMeshProUGUI GameOverDescriptionText;
+	public TextMeshProUGUI GameOverStatistics;
 
 	[Header("Fade Out")]
 	public Image ButtonAttack;
@@ -42,9 +43,10 @@ public class GameOverView : MonoBehaviour
 			image.DOFade(1f, 2f);
 		}
 
-		GameOverPanel.DOFade(0.5f, 2f);
+		GameOverPanel.DOFade(0.4f, 2f);
 		GameOverText.DOFade(1f, 2f);
 		GameOverDescriptionText.DOFade(1f, 2f);
+		GameOverStatistics.DOFade(1f, 2f);
 
 		ButtonAttack.DOFade(0f, 2f);
 		ButtonWeapon1.DOFade(0f, 2f);
@@ -60,13 +62,15 @@ public class GameOverView : MonoBehaviour
 
 		if (GameManager.CurrentTurn >= GameManager.TurnsToVictory)
 		{
-			GameOverText.text = "Victory?";
-			GameOverDescriptionText.text = "You did it, at least your friends are safe.";
+			GameOverText.text = "Victory";
+			GameOverDescriptionText.text = "You did it! You held them enough time for your friends to get to safety.\n\nYou will be remembered.";
 		}
 		else
 		{
 			GameOverText.text = "Game Over";
-			GameOverDescriptionText.text = "Your friends didn't make it.";
+			GameOverDescriptionText.text = $"You fought well, but your friends still got caught.";
 		}
+
+		GameOverStatistics.text = $"You held them for <color=yellow>{GameManager.CurrentTurn}</color> turns and eliminated <color=yellow>{GameManager.KillCount}</color> enemies.";
 	}
 }
