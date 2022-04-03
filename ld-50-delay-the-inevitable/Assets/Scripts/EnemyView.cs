@@ -13,6 +13,8 @@ public class EnemyView : MonoBehaviour
 
 	public SimpleAudioEvent WarningSound;
 
+	public bool FadeIn = true;
+
 	private bool _attackReady = false;
 
 	public void ActivateMark()
@@ -39,12 +41,14 @@ public class EnemyView : MonoBehaviour
 		EnemyBehaviour.OnIdle += EnemyBehaviour_OnIdle;
 		EnemyBehaviour.OnEnemyDestroyed += EnemyBehaviour_OnDeath;
 
-		var allSpriteRenderers = GetComponentsInChildren<SpriteRenderer>();
-
-		foreach (var spriteRenderer in allSpriteRenderers)
+		if (FadeIn)
 		{
-			spriteRenderer.color = new Color(1, 1, 1, 0);
-			spriteRenderer.DOFade(1, 0.5f);
+			var allSpriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+			foreach (var spriteRenderer in allSpriteRenderers)
+			{
+				spriteRenderer.color = new Color(1, 1, 1, 0);
+				spriteRenderer.DOFade(1, 0.5f);
+			}
 		}
 	}
 
