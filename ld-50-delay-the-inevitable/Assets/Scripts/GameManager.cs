@@ -18,11 +18,17 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	private GameBoard _gameBoard;
 
+	public int TurnsToVictory = 20;
+
+	private int _turnsCount = 0;
+
 	private List<Enemy> _enemies = new List<Enemy>();
 
 	private bool _gameOver;
 
 	public event Action OnPlayerDefeated;
+
+	public event Action<int> OnTurnPassed;
 
 	public void AllowRestart()
 	{
@@ -35,6 +41,7 @@ public class GameManager : MonoBehaviour
 		_playerAttackController.OnAttackStartedExecuting += PlayerAttackController_OnAttackStartedExecuting;
 		_playerAttackController.OnAttackFinishedExecuting += PlayerAttackController_OnAttackFinishedExecuting;
 		_gameOver = false;
+		_turnsCount = 0;
 
 		_enemies.AddRange(FindObjectsOfType<Enemy>());
 
@@ -91,6 +98,15 @@ public class GameManager : MonoBehaviour
 			_playerAttackController.enabled = true;
 			_playerAttackController.ReactivateAttackGraphics();
 			_inputManager.enabled = true;
+
+			_turnsCount++;
+
+			OnTurnPassed?.Invoke(_turnsCount);
+
+			if (_turnsCount >= TurnsToVictory)
+			{
+				Debug.Log("Victory!");
+			}
 		}
 	}
 

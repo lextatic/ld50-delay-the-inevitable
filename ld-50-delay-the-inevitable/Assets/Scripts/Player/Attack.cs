@@ -35,6 +35,8 @@ public class Attack : MonoBehaviour
 
 	public void SelectAttack(int index)
 	{
+		if (!enabled) return;
+
 		Debug.Assert(index <= AttackShapes.Length);
 
 		_currentAttackIndex = index;
@@ -51,6 +53,8 @@ public class Attack : MonoBehaviour
 
 	public void ExecuteAttack()
 	{
+		if (!enabled) return;
+
 		OnAttackStartedExecuting?.Invoke();
 
 		StartCoroutine(AttackAnimationSequence());
