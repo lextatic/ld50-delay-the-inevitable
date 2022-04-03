@@ -2081,7 +2081,7 @@ PrefabInstance:
       objectReference: {fileID: 203566585}
     - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
       propertyPath: _spawnDataPerTurn.Array.size
-      value: 20
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
       propertyPath: _spawnDataPerTurn.Array.data[0].Sword
@@ -2117,7 +2117,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
       propertyPath: _spawnDataPerTurn.Array.data[8].Sword
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
       propertyPath: _spawnDataPerTurn.Array.data[9].Sword
@@ -2125,7 +2125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
       propertyPath: _spawnDataPerTurn.Array.data[10].Sword
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
       propertyPath: _spawnDataPerTurn.Array.data[11].Sword
@@ -2133,7 +2133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
       propertyPath: _spawnDataPerTurn.Array.data[12].Sword
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
       propertyPath: _spawnDataPerTurn.Array.data[13].Sword
@@ -2157,7 +2157,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
       propertyPath: _spawnDataPerTurn.Array.data[18].Sword
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
       propertyPath: _spawnDataPerTurn.Array.data[19].Sword
@@ -2184,20 +2184,36 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
-      propertyPath: _spawnDataPerTurn.Array.data[6].Hammer
+      propertyPath: _spawnDataPerTurn.Array.data[6].Dagger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[6].Hammer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
       propertyPath: _spawnDataPerTurn.Array.data[7].Hammer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[8].Dagger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
       propertyPath: _spawnDataPerTurn.Array.data[8].Hammer
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[9].Dagger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
       propertyPath: _spawnDataPerTurn.Array.data[9].Hammer
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[10].Dagger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
       propertyPath: _spawnDataPerTurn.Array.data[10].Hammer
@@ -2213,7 +2229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
       propertyPath: _spawnDataPerTurn.Array.data[12].Dagger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
       propertyPath: _spawnDataPerTurn.Array.data[12].Hammer
@@ -2253,7 +2269,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
       propertyPath: _spawnDataPerTurn.Array.data[17].Dagger
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
       propertyPath: _spawnDataPerTurn.Array.data[17].Hammer
@@ -2261,11 +2277,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
       propertyPath: _spawnDataPerTurn.Array.data[18].Dagger
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
       propertyPath: _spawnDataPerTurn.Array.data[18].Hammer
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
       propertyPath: _spawnDataPerTurn.Array.data[19].Dagger

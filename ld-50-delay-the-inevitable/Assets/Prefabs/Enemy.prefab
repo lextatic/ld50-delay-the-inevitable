@@ -468,8 +468,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GridPosition: {x: 0, y: 0}
-  MoveForwardChance: 0.6
-  MoveSidewaysChance: 0.3
+  MoveForwardChance: 0.7
+  MoveSidewaysChance: 0.25
   TurnsToAttack: 5
   AttackRange: {x: 0, y: 1}
   SlashSound: {fileID: 11400000, guid: 9684a8dc4fd2e9945bb7519b807dc342, type: 2}
