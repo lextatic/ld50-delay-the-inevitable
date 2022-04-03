@@ -1316,6 +1316,14 @@ PrefabInstance:
       propertyPath: GameManager
       value: 
       objectReference: {fileID: 973704126}
+    - target: {fileID: 5159246670057212385, guid: 6b8e2ae1acdf5f74d8938718b937d204, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8614475027332908966, guid: 6b8e2ae1acdf5f74d8938718b937d204, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b8e2ae1acdf5f74d8938718b937d204, type: 3}
 --- !u!1001 &7728348841688529909
