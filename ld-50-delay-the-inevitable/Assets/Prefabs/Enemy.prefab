@@ -338,6 +338,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6461456199835181904}
+  - component: {fileID: 7151970552892594215}
   m_Layer: 0
   m_Name: View
   m_TagString: Untagged
@@ -361,6 +362,25 @@ Transform:
   m_Father: {fileID: 6461456199866920883}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &7151970552892594215
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6461456199835181905}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7e6a9e325b61cbb44b30fe62ad6b5756, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6461456199866920847
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,8 +392,8 @@ GameObject:
   - component: {fileID: 6461456199866920883}
   - component: {fileID: 6461456199866920844}
   - component: {fileID: 6461456199866920845}
-  - component: {fileID: 6461456199866920846}
   - component: {fileID: 5232729609860245875}
+  - component: {fileID: 5040255157341464277}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -435,21 +455,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &6461456199866920846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6461456199866920847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cdffa2261df7554cb0a491a09221700, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemyBehaviour: {fileID: 5232729609860245875}
-  Mark: {fileID: 6461456199413538768}
-  Warning: {fileID: 8594692059622899617}
 --- !u!114 &5232729609860245875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -467,6 +472,22 @@ MonoBehaviour:
   MoveSidewaysChance: 0.3
   TurnsToAttack: 8
   AttackRange: {x: 0, y: 1}
+--- !u!114 &5040255157341464277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6461456199866920847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cdffa2261df7554cb0a491a09221700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyBehaviour: {fileID: 5232729609860245875}
+  Animator: {fileID: 7151970552892594215}
+  Mark: {fileID: 6461456199413538768}
+  Warning: {fileID: 8594692059622899617}
 --- !u!1 &8520089407308010665
 GameObject:
   m_ObjectHideFlags: 0

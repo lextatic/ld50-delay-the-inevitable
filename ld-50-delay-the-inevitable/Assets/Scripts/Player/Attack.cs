@@ -86,7 +86,7 @@ public class Attack : MonoBehaviour
 			yield return new WaitForSeconds(0.7f);
 			OnAttackSwing?.Invoke();
 			yield return new WaitForSeconds(0.60f);
-			Destroy(_currentTargets[i].gameObject);
+			_currentTargets[i].GetComponent<Enemy>().Kill();
 			yield return new WaitForSeconds(0.15f);
 			attacked = true;
 		}
@@ -135,9 +135,4 @@ public class Attack : MonoBehaviour
 	{
 		transform.Rotate(Vector3.forward, -RotationSpeed * Time.deltaTime * 360f);
 	}
-
-	//private void OnTriggerEnter2D(Collider2D collision)
-	//{
-	//	Debug.Log(collision.name);
-	//}
 }

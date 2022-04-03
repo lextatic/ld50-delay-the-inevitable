@@ -6,6 +6,8 @@ public class PlayerView : MonoBehaviour
 
 	public Attack AttackComponent;
 
+	public GameManager GameManager;
+
 	public GameObject[] SheathedWeapons;
 	public GameObject[] EquippedWeapons;
 
@@ -16,6 +18,13 @@ public class PlayerView : MonoBehaviour
 		AttackComponent.OnMovingBack += AttackComponent_OnMovingBack;
 		AttackComponent.OnAttackFinishedExecuting += AttackComponent_OnAttackFinishedExecuting;
 		AttackComponent.OnAttackSwing += AttackComponent_OnAttackSwing;
+
+		GameManager.OnPlayerDefeated += GameManager_OnPlayerDefeated;
+	}
+
+	private void GameManager_OnPlayerDefeated()
+	{
+		Animator.SetInteger("State", 5);
 	}
 
 	private void AttackComponent_OnAttackSwing()

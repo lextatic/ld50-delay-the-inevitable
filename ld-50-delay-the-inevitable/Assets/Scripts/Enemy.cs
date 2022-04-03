@@ -1,5 +1,6 @@
 using DG.Tweening;
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -24,6 +25,14 @@ public class Enemy : MonoBehaviour
 
 	public event Action OnAttackExecuted;
 
+	public event Action OnPlayerDefeated;
+
+	public event Action OnMoving;
+
+	public event Action OnIdle;
+
+	//public event Action OnDeath;
+
 	public event Action<Enemy> OnEnemyDestroyed;
 
 	public bool IsMoving { get; private set; } = true;
@@ -40,13 +49,23 @@ public class Enemy : MonoBehaviour
 			{
 				IsAttacking = true;
 
-				transform.DOMove(Vector3.zero, 0.5f).OnComplete(() =>
+				OnMoving?.Invoke();
+
+				var offset = Vector3.zero;
+				if (transform.position.x < 0)
 				{
-					Debug.Log("Defeat");
-					transform.DOMove(_gameBoard.GetWorldPosition(GridPosition.x, GridPosition.y), 0.5f).OnComplete(() =>
-					{
-						IsAttacking = false;
-					});
+					transform.localScale = new Vector3(-1, 1, 1);
+					offset = Vector3.left;
+				}
+				else
+				{
+					offset = Vector3.right;
+					transform.localScale = new Vector3(1, 1, 1);
+				}
+
+				transform.DOMove(Vector3.zero + offset, 0.7f).OnComplete(() =>
+				{
+					StartCoroutine(AttackCoroutine());
 				});
 				return;
 			}
@@ -62,6 +81,42 @@ public class Enemy : MonoBehaviour
 	{
 		IsMoving = true;
 		AIMove();
+	}
+
+	public void Kill()
+	{
+		_gameBoard.ReleasePosition(GridPosition);
+		IsMoving = false;
+		OnEnemyDestroyed?.Invoke(this);
+
+		StartCoroutine(DeathCoroutine());
+
+		//OnDeath?.Invoke();
+		//Destroy(_currentTargets[i].gameObject);
+	}
+
+	private IEnumerator DeathCoroutine()
+	{
+		yield return new WaitForSeconds(1.2f);
+		Destroy(gameObject);
+	}
+
+	private IEnumerator AttackCoroutine()
+	{
+		//transform.localScale = new Vector3(transform.localScale.x * -1, 1, 1);
+
+		// Animar ataque, dar delay
+		OnAttackExecuted?.Invoke();
+		yield return new WaitForSeconds(0.60f);
+
+		OnPlayerDefeated?.Invoke();
+
+		yield return new WaitForSeconds(0.15f);
+		transform.DOMove(_gameBoard.GetWorldPosition(GridPosition.x, GridPosition.y), 0.5f).OnComplete(() =>
+		{
+			IsAttacking = false;
+			OnIdle?.Invoke();
+		});
 	}
 
 	private void AIMove()
@@ -121,16 +176,40 @@ public class Enemy : MonoBehaviour
 
 	private void UpdateWorldPosition()
 	{
-		transform.DOMove(_gameBoard.GetWorldPosition(GridPosition.x, GridPosition.y), 0.5f).OnComplete(() =>
+		OnMoving?.Invoke();
+
+		var newPosition = _gameBoard.GetWorldPosition(GridPosition.x, GridPosition.y);
+
+		if (transform.position.x - newPosition.x < 0)
 		{
+			transform.localScale = new Vector3(-1, 1, 1);
+		}
+		else
+		{
+			transform.localScale = new Vector3(1, 1, 1);
+		}
+
+		transform.DOMove(newPosition, 0.5f).OnComplete(() =>
+		{
+			if (transform.position.x < 0)
+			{
+				transform.localScale = new Vector3(-1, 1, 1);
+			}
+			else
+			{
+				transform.localScale = new Vector3(1, 1, 1);
+			}
+
 			IsMoving = false;
+			OnIdle?.Invoke();
 		});
 	}
 
+	// TODO: Provavelmente não precisa mais disso aqui
 	private void OnDestroy()
 	{
-		_gameBoard.ReleasePosition(GridPosition);
-		IsMoving = false;
-		OnEnemyDestroyed?.Invoke(this);
+		//_gameBoard.ReleasePosition(GridPosition);
+		//IsMoving = false;
+		//OnEnemyDestroyed?.Invoke(this);
 	}
 }
