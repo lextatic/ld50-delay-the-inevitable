@@ -169,6 +169,32 @@ public class Enemy : MonoBehaviour
 		UpdateWorldPosition();
 	}
 
+	public void MoveRight()
+	{
+		StartCoroutine(MoveRightCoroutine());
+	}
+
+	public void MoveLeft()
+	{
+		StartCoroutine(MoveLeftCoroutine());
+	}
+
+	private IEnumerator MoveRightCoroutine()
+	{
+		yield return new WaitForSeconds(1f + UnityEngine.Random.value);
+		transform.localScale = new Vector3(-1, 1, 1);
+		transform.DOMove(transform.position + Vector3.right * 40, 5f);
+		OnMoving?.Invoke();
+	}
+
+	private IEnumerator MoveLeftCoroutine()
+	{
+		yield return new WaitForSeconds(1f + UnityEngine.Random.value);
+		transform.localScale = new Vector3(1, 1, 1);
+		transform.DOMove(transform.position + Vector3.left * 40, 50f);
+		OnMoving?.Invoke();
+	}
+
 	private void UpdateWorldPosition()
 	{
 		OnMoving?.Invoke();

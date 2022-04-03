@@ -113,6 +113,12 @@ public class Attack : MonoBehaviour
 			OnAttackSwing?.Invoke();
 			SlashSound.Play(Camera.main.GetComponent<AudioSource>());
 			yield return new WaitForSeconds(0.60f);
+			// TODO: Temp (and horrible) fix
+			if (i >= _currentTargets.Count)
+			{
+				Debug.Log($"It happened again. i = {i} - _currentTargets.Count = {_currentTargets.Count}");
+				i = _currentTargets.Count - 1;
+			}
 			_currentTargets[i].GetComponent<Enemy>().Kill();
 			yield return new WaitForSeconds(0.15f);
 			attacked = true;

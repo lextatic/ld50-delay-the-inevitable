@@ -50,7 +50,62 @@ MonoBehaviour:
   _playerAttackController: {fileID: 0}
   _inputManager: {fileID: 1876194016}
   _gameBoard: {fileID: 3761247212243345758}
-  TurnsToVictory: 20
+  TurnsToVictory: 2
+  _spawnDataPerTurn:
+  - Sword: 2
+    Hammer: 0
+    Dagger: 0
+  - Sword: 2
+    Hammer: 0
+    Dagger: 0
+  - Sword: 2
+    Hammer: 0
+    Dagger: 0
+  - Sword: 2
+    Hammer: 0
+    Dagger: 0
+  - Sword: 2
+    Hammer: 1
+    Dagger: 0
+  - Sword: 2
+    Hammer: 0
+    Dagger: 0
+  - Sword: 2
+    Hammer: 0
+    Dagger: 1
+  - Sword: 2
+    Hammer: 0
+    Dagger: 0
+  - Sword: 0
+    Hammer: 1
+    Dagger: 1
+  - Sword: 1
+    Hammer: 1
+    Dagger: 1
+  - Sword: 1
+    Hammer: 1
+    Dagger: 1
+  - Sword: 1
+    Hammer: 0
+    Dagger: 1
+  - Sword: 0
+    Hammer: 2
+    Dagger: 1
+  - Sword: 1
+    Hammer: 0
+    Dagger: 1
+  - Sword: 1
+    Hammer: 1
+    Dagger: 1
+  - Sword: 1
+    Hammer: 1
+    Dagger: 1
+  - Sword: 2
+    Hammer: 0
+    Dagger: 1
+  - Sword: 1
+    Hammer: 1
+    Dagger: 1
 --- !u!114 &3761247212243345758
 MonoBehaviour:
   m_ObjectHideFlags: 0

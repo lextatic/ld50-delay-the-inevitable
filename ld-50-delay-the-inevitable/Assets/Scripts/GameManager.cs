@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
 
 	public int TurnsToVictory = 20;
 
+	public GameObject SkipText;
+
 	[SerializeField]
 	private SpawnData[] _spawnDataPerTurn;
 
@@ -41,11 +43,7 @@ public class GameManager : MonoBehaviour
 
 	public event Action<int> OnTurnPassed;
 
-	public void AllowRestart()
-	{
-		_inputManager.enabled = true;
-		_inputManager.GameOver = true;
-	}
+	public int CurrentTurn { get => _turnsCount; }
 
 	private void Start()
 	{
@@ -148,7 +146,30 @@ public class GameManager : MonoBehaviour
 			_inputManager.enabled = false;
 			OnPlayerDefeated?.Invoke();
 			_gameOver = true;
+
+			foreach (var enemy in _enemies)
+			{
+				if (_turnsCount >= TurnsToVictory)
+				{
+					enemy.MoveLeft();
+				}
+				else
+				{
+					enemy.MoveRight();
+				}
+			}
+
+			StartCoroutine(AllowRestartCoroutine());
 		}
+	}
+
+	private IEnumerator AllowRestartCoroutine()
+	{
+		yield return new WaitForSeconds(3f);
+
+		SkipText.SetActive(true);
+		_inputManager.enabled = true;
+		_inputManager.GameOver = true;
 	}
 
 	private void Enemy_OnEnemyDestroyed(Enemy destroyedEnemy)

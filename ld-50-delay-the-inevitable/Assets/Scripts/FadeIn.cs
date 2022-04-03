@@ -1,9 +1,10 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class FadeIn : MonoBehaviour
+public class FadeInImage : MonoBehaviour
 {
-	public SpriteRenderer spriteRenderer;
+	public Image Image;
 
 	public float AlphaValue;
 
@@ -11,6 +12,6 @@ public class FadeIn : MonoBehaviour
 
 	void Start()
 	{
-		spriteRenderer.DOFade(AlphaValue, Time);
+		Image.DOFade(AlphaValue, Time);
 	}
 }
