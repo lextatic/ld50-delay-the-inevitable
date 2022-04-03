@@ -204,7 +204,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2275933}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 203566585}
+        m_TargetAssemblyTypeName: Attack, Assembly-CSharp
+        m_MethodName: SelectAttack
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2275933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,10 +314,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 900, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -514,7 +526,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 432504086}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 203566585}
+        m_TargetAssemblyTypeName: Attack, Assembly-CSharp
+        m_MethodName: SelectAttack
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &432504086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -851,6 +875,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5232729609860245875, guid: 3b618791573bdc649bd9b4eed12030dd, type: 3}
+      propertyPath: AttackRange.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232729609860245875, guid: 3b618791573bdc649bd9b4eed12030dd, type: 3}
       propertyPath: TurnsToAttack
       value: 2
       objectReference: {fileID: 0}
@@ -926,6 +954,7 @@ GameObject:
   m_Component:
   - component: {fileID: 728950205}
   - component: {fileID: 728950206}
+  - component: {fileID: 728950207}
   m_Layer: 0
   m_Name: Board1
   m_TagString: Untagged
@@ -986,9 +1015,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -100
+  m_SortingOrder: -99
   m_Sprite: {fileID: 21300000, guid: c49f74d60491df84e8eb0d79c5bb16c2, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.05882353}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -998,6 +1027,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &728950207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728950204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18f82cb66d5ec2b45ac3c1800bbe5e22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 728950206}
+  AlphaValue: 0.05
+  Time: 1
 --- !u!4 &757781278 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7728348841334778091, guid: 855305b9aa87a1642a6783cc6bb2f91f, type: 3}
@@ -1176,6 +1220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1243854083}
   - component: {fileID: 1243854084}
+  - component: {fileID: 1243854085}
   m_Layer: 0
   m_Name: Board2
   m_TagString: Untagged
@@ -1236,9 +1281,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -100
+  m_SortingOrder: -98
   m_Sprite: {fileID: 21300000, guid: 0453c5d9ba0218041ae4b5f5115dcfeb, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.05882353}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1248,6 +1293,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1243854085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243854082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18f82cb66d5ec2b45ac3c1800bbe5e22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 1243854084}
+  AlphaValue: 0.05
+  Time: 1
 --- !u!1 &1443630892
 GameObject:
   m_ObjectHideFlags: 0
@@ -1348,6 +1408,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5232729609860245875, guid: 3b618791573bdc649bd9b4eed12030dd, type: 3}
+      propertyPath: AttackRange.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232729609860245875, guid: 3b618791573bdc649bd9b4eed12030dd, type: 3}
       propertyPath: TurnsToAttack
       value: 2
       objectReference: {fileID: 0}
@@ -1424,6 +1488,7 @@ GameObject:
   - component: {fileID: 1476519830}
   - component: {fileID: 1476519832}
   - component: {fileID: 1476519831}
+  - component: {fileID: 1476519833}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -1490,6 +1555,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1476519829}
   m_CullTransparentMesh: 1
+--- !u!114 &1476519833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1476519829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d42baa5fac9ddda4f9caaabb5cf68959, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameManager: {fileID: 973704126}
+  FillBar: {fileID: 1149808209}
+  BaseBar: {fileID: 1476519830}
 --- !u!1 &1501420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1646,7 +1726,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1536308071}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 203566585}
+        m_TargetAssemblyTypeName: Attack, Assembly-CSharp
+        m_MethodName: ExecuteAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1536308071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1766,7 +1858,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1606285969}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 203566585}
+        m_TargetAssemblyTypeName: Attack, Assembly-CSharp
+        m_MethodName: SelectAttack
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1606285969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1975,6 +2079,202 @@ PrefabInstance:
       propertyPath: _playerAttackController
       value: 
       objectReference: {fileID: 203566585}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.size
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[0].Sword
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[1].Sword
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[2].Sword
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[3].Sword
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[4].Sword
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[5].Sword
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[6].Sword
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[7].Sword
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[8].Sword
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[9].Sword
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[10].Sword
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[11].Sword
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[12].Sword
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[13].Sword
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[14].Sword
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[15].Sword
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[16].Sword
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[17].Sword
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[18].Sword
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[19].Sword
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[1].Hammer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[2].Dagger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[3].Dagger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[3].Hammer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[4].Hammer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[6].Hammer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[7].Hammer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[8].Hammer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[9].Hammer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[10].Hammer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[11].Dagger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[11].Hammer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[12].Dagger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[12].Hammer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[13].Dagger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[13].Hammer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[14].Dagger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[14].Hammer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[15].Dagger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[15].Hammer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[16].Dagger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[16].Hammer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[17].Dagger
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[17].Hammer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[18].Dagger
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[18].Hammer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[19].Dagger
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+      propertyPath: _spawnDataPerTurn.Array.data[19].Hammer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2712562553843354259, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
       propertyPath: m_RootOrder
       value: 3

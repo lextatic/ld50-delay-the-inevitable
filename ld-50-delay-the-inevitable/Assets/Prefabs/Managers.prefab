@@ -50,6 +50,7 @@ MonoBehaviour:
   _playerAttackController: {fileID: 0}
   _inputManager: {fileID: 1876194016}
   _gameBoard: {fileID: 3761247212243345758}
+  TurnsToVictory: 20
 --- !u!114 &3761247212243345758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,5 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d228292830b102b4fa506c47c1967769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyPrefab: {fileID: 5232729609860245875, guid: 3b618791573bdc649bd9b4eed12030dd, type: 3}
+  SwordEnemyPrefab: {fileID: 5232729609860245875, guid: 3b618791573bdc649bd9b4eed12030dd, type: 3}
+  HammerEnemyPrefab: {fileID: 8557605448065836868, guid: 3f819f72f9dae54419d8ad3f9bf327be, type: 3}
+  DaggerEnemyPrefab: {fileID: 5354463846158249939, guid: 0f5c2dc71a5da1e4b951f98e84f92e37, type: 3}
   GameBoard: {fileID: 3761247212243345758}

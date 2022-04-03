@@ -6,6 +6,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+	[Serializable]
+	private struct SpawnData
+	{
+		public int Sword;
+		public int Hammer;
+		public int Dagger;
+	}
+
 	[SerializeField]
 	private EnemySpawner _enemySpawner;
 
@@ -19,6 +27,9 @@ public class GameManager : MonoBehaviour
 	private GameBoard _gameBoard;
 
 	public int TurnsToVictory = 20;
+
+	[SerializeField]
+	private SpawnData[] _spawnDataPerTurn;
 
 	private int _turnsCount = 0;
 
@@ -84,15 +95,8 @@ public class GameManager : MonoBehaviour
 			}
 			yield return new WaitWhile(() => _enemies.Any(enemy => enemy.IsMoving));
 
-			for (int i = 0; i < 2; i++)
-			{
-				if (_enemySpawner.TrySpawnNewEnemy(out var newEnemy))
-				{
-					_enemies.Add(newEnemy);
-					newEnemy.OnEnemyDestroyed += Enemy_OnEnemyDestroyed;
-					newEnemy.OnPlayerDefeated += Enemy_OnPlayerDefeated;
-				}
-			}
+			SpawnTurnEnemies();
+
 			yield return new WaitWhile(() => _enemies.Any(enemy => enemy.IsMoving));
 
 			_playerAttackController.enabled = true;
@@ -107,6 +111,32 @@ public class GameManager : MonoBehaviour
 			{
 				Debug.Log("Victory!");
 			}
+		}
+	}
+	private void SpawnTurnEnemies()
+	{
+		int spawnDataIndex = _turnsCount < _spawnDataPerTurn.Length ? _turnsCount : _spawnDataPerTurn.Length - 1;
+
+		SpawnMultipleEnemies(_spawnDataPerTurn[spawnDataIndex].Sword, EnemyType.Sword);
+		SpawnMultipleEnemies(_spawnDataPerTurn[spawnDataIndex].Hammer, EnemyType.Hammer);
+		SpawnMultipleEnemies(_spawnDataPerTurn[spawnDataIndex].Dagger, EnemyType.Dagger);
+	}
+
+	private void SpawnMultipleEnemies(int number, EnemyType enemyType)
+	{
+		for (int i = 0; i < number; i++)
+		{
+			SpawnEnemy(enemyType);
+		}
+	}
+
+	private void SpawnEnemy(EnemyType enemyType)
+	{
+		if (_enemySpawner.TrySpawnNewEnemy(out var newEnemy, enemyType))
+		{
+			_enemies.Add(newEnemy);
+			newEnemy.OnEnemyDestroyed += Enemy_OnEnemyDestroyed;
+			newEnemy.OnPlayerDefeated += Enemy_OnPlayerDefeated;
 		}
 	}
 

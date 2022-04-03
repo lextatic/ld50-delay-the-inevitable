@@ -65,6 +65,6 @@ public class IntroController : MonoBehaviour
 
 	public void LoadGame()
 	{
-		SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
+		SceneManager.LoadScene(1);
 	}
 }
