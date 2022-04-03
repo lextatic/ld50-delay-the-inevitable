@@ -11,6 +11,8 @@ public class PlayerView : MonoBehaviour
 	public GameObject[] SheathedWeapons;
 	public GameObject[] EquippedWeapons;
 
+	public ParticleSystem BloodParticles;
+
 	private void Start()
 	{
 		AttackComponent.OnWeaponChanged += AttackComponent_OnWeaponChanged;
@@ -25,6 +27,8 @@ public class PlayerView : MonoBehaviour
 	private void GameManager_OnPlayerDefeated()
 	{
 		Animator.SetInteger("State", 5);
+
+		BloodParticles.Emit(5);
 	}
 
 	private void AttackComponent_OnAttackSwing()

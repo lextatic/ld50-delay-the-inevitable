@@ -13,6 +13,8 @@ public class EnemyView : MonoBehaviour
 
 	public SimpleAudioEvent WarningSound;
 
+	public ParticleSystem BloodParticles;
+
 	public bool FadeIn = true;
 
 	private bool _attackReady = false;
@@ -55,6 +57,8 @@ public class EnemyView : MonoBehaviour
 	private void EnemyBehaviour_OnDeath(Enemy enemy)
 	{
 		Animator.SetInteger("State", 5);
+
+		BloodParticles.Emit(5);
 
 		var allSpriteRenderers = GetComponentsInChildren<SpriteRenderer>();
 

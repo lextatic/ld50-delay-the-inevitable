@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -29,6 +30,13 @@ public class GameOverView : MonoBehaviour
 
 	private void GameManager_OnPlayerDefeated()
 	{
+		StartCoroutine(PlayerDefeatedCoroutine());
+	}
+
+	private IEnumerator PlayerDefeatedCoroutine()
+	{
+		yield return new WaitForSeconds(1f);
+
 		foreach (var image in LetterboxImages)
 		{
 			image.DOFade(1f, 2f);
