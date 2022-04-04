@@ -609,7 +609,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
   m_PrefabInstance: {fileID: 74247019450502114}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2042995980}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 27a5fb4b6d03b4f40a233310398e2825, type: 3}
@@ -1038,6 +1038,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b618791573bdc649bd9b4eed12030dd, type: 3}
+--- !u!1 &2042995980 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1192462880987108230, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+  m_PrefabInstance: {fileID: 74247019450502114}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2042995981 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3761247212243345758, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
+  m_PrefabInstance: {fileID: 74247019450502114}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042995980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be268f9eae990bf4984b7a32333d3cc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2042995985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042995980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b71b9cf512642478fc2a9b2d61ef9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameManager: {fileID: 973704126}
+  GameBoard: {fileID: 2042995981}
+  EnemyActor: {fileID: 7380384046818466833, guid: 57131a7d71d5e7a4a8d641a011ee5606, type: 3}
 --- !u!1001 &74247019450502114
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1061,18 +1092,6 @@ PrefabInstance:
       propertyPath: _playerAttackController
       value: 
       objectReference: {fileID: 203566585}
-    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
-      propertyPath: _spawnDataPerTurn.Array.data[10].Sword
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
-      propertyPath: _spawnDataPerTurn.Array.data[9].Hammer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1713025795373191251, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
-      propertyPath: _spawnDataPerTurn.Array.data[12].Hammer
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2712562553843354259, guid: 0096fe337be1ae9489552e0e345fd954, type: 3}
       propertyPath: m_RootOrder
       value: 3

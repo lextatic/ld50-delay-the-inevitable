@@ -23,6 +23,14 @@ public class GameBoard : MonoBehaviour
 
 	public Vector2Int BoardSize { get => _boardSize; }
 
+	public float BoardOutsideSize
+	{
+		get
+		{
+			return _innerCircleRadius + (_boardSize.y * _layerRadiusIncrement);
+		}
+	}
+
 	public bool HasFreeSpawnPoints
 	{
 		get

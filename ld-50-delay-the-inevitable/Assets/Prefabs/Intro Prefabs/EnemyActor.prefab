@@ -154,7 +154,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -3
-  m_Sprite: {fileID: 21300000, guid: 26dd9eabaa750ed4dbde170d5cece6ae, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e46d640c66f98924987e6d4eabe9e61d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -378,6 +378,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 6667358584805043129}
+  Dagger: {fileID: 21300000, guid: 26dd9eabaa750ed4dbde170d5cece6ae, type: 3}
+  Hammer: {fileID: 21300000, guid: 8aa6ad91a0661d547879f3dd57f277a4, type: 3}
+  Renderer: {fileID: 2958802496145976237}
 --- !u!1 &7380384047304354894
 GameObject:
   m_ObjectHideFlags: 0
