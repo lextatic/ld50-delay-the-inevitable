@@ -1249,6 +1249,10 @@ PrefabInstance:
       propertyPath: TitleBackground
       value: 
       objectReference: {fileID: 1987555799}
+    - target: {fileID: 2710339185710448594, guid: 439c4019d3cbb1044982c927bd922870, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3685249426355803757, guid: 439c4019d3cbb1044982c927bd922870, type: 3}
       propertyPath: m_RootOrder
       value: 8

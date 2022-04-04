@@ -81,16 +81,16 @@ MonoBehaviour:
     Hammer: 1
     Dagger: 1
   - Sword: 1
-    Hammer: 1
+    Hammer: 0
     Dagger: 1
-  - Sword: 1
+  - Sword: 0
     Hammer: 1
     Dagger: 1
   - Sword: 1
     Hammer: 0
     Dagger: 1
   - Sword: 0
-    Hammer: 2
+    Hammer: 1
     Dagger: 1
   - Sword: 1
     Hammer: 0
