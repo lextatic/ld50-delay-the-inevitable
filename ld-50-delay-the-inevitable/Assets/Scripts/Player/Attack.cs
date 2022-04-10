@@ -205,8 +205,8 @@ public class Attack : MonoBehaviour
 		targetRemoved.GetComponentInChildren<EnemyView>().DeactivateMark();
 	}
 
-	private void Update()
+	private void FixedUpdate()
 	{
-		transform.Rotate(Vector3.forward, -RotationSpeed * Time.deltaTime * 360f);
+		transform.Rotate(Vector3.forward, -RotationSpeed * Time.fixedDeltaTime * 360f);
 	}
 }
